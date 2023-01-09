@@ -21,11 +21,4 @@ jobs:
       - name: Generate RSS file
         run: |
           python cmd/rss_grenerator.py
-      - name: Commit and push changes
-        uses: EndBug/add-and-commit@v2
-        with:
-          add: 'rss.xml'
-          message: 'Generate RSS file'
-          author_name: 'SummerSec'
-          author_email: 'SummerSec@github.com'
-          push: true
+      

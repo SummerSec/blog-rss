@@ -20,7 +20,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Generate RSS file
         run: |
-          python rss_grenerator.py
+          python cmd/rss_grenerator.py
       - name: Commit and push changes
         uses: EndBug/add-and-commit@v2
         with:

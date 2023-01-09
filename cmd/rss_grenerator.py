@@ -49,12 +49,10 @@ if __name__ == '__main__':
     fg.description("像清水一般清澈透明")
     fg.link(href="https://sumsec.me", rel='alternate')
     fg.language("zh-CN")
-
     sitemap = SiteMap()
     sitemap.get_all_urls()
     # 颠倒顺序
     sitemap.urls.reverse()
-
     for md_link in sitemap.urls:
         fe = fg.add_entry()
         md_link = md_link.replace(" ", "")

@@ -1,3 +1,5 @@
+import os
+
 import requests
 from feedgen.feed import FeedGenerator
 
@@ -14,6 +16,29 @@ def get_description(html_link) -> str:
             if line.startswith('<meta name="description" content="'):
                 description_url = line.replace('<meta name="description" content="', '').replace('">', '')
     return description_url
+
+
+def git_push_file():
+    """Git Push the file to the github"""
+    # set author and email
+    try:
+        username = "git config --global user.name SummerSec"
+        email = "git config --global user.email SummerSec@users.noreply.github.com"
+        os.system(username)
+        os.system(email)
+        # git add
+        git_add = "git add ."
+        os.system(git_add)
+        # git commit
+        git_commit = "git commit -m \":fire: update rss.xml\""
+        os.system(git_commit)
+        # git push
+        git_push = "git push"
+        os.system(git_push)
+
+
+    except Exception as e:
+        print("Error: " + str(e))
 
 
 if __name__ == '__main__':
@@ -41,4 +66,6 @@ if __name__ == '__main__':
         # fe.description(description)
 
     fg.rss_file("../rss.xml")
+    fg.atom_file("../atom.xml")
     print('RSS feed generated successfully!')
+    git_push_file()
